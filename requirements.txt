@@ -1,0 +1,4 @@
+pylnk3==0.4.2
+psutil==5.9.8
+pywin32==306
+win10toast==0.9
