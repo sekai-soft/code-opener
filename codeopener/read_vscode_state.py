@@ -20,10 +20,14 @@ def parse_vscode_state(value: str) -> List[str]:
         raise CodeOpenerException("VSCode state is not a valid JSON")
 
 
-def read_vscode_state() -> List[str]:
+def get_vscode_state_path() -> str:
     if 'APPDATA' not in os.environ:
         raise CodeOpenerException("APPDATA is not found in environment variables")
-    p = os.path.join(os.environ['APPDATA'], "Code", "User", "globalStorage", "state.vscdb")
+    return os.path.join(os.environ['APPDATA'], "Code", "User", "globalStorage", "state.vscdb")
+
+
+def read_vscode_state() -> List[str]:
+    p = get_vscode_state_path()
     if not os.path.exists(p):
         raise CodeOpenerException("VSCode state file is not found")
     conn = sqlite3.connect(p)
