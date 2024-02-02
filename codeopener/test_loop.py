@@ -52,8 +52,11 @@ class LoopTestCase(unittest.TestCase):
         create_vscode_shortcut("file:///c%3A/test2", "test2")
         create_vscode_shortcut("file:///c%3A/test3", "test3")
 
-        loop()
+        res = loop()
+
         # test1 should be added; test2 should be retained; test3 should be removed
+        self.assertEqual(res.added_count, 1)
+        self.assertEqual(res.removed_count, 1)
         self.assertEqual(list_vscode_shortcuts(), desired_folder_uris)
 
 

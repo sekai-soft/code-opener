@@ -1,4 +1,5 @@
 from typing import Callable
+from dataclasses import dataclass
 from .create_vscode_shortcut import create_vscode_shortcut
 from .list_vscode_shortcuts import list_vscode_shortcuts
 from .delete_vscode_shortcut import delete_vscode_shortcut    
@@ -7,13 +8,18 @@ from .read_vscode_state import read_vscode_state
 from .parse_workspace_name import parse_workspace_name
 
 
-def loop(callback: Callable[[int, int], None] = None):
+@dataclass
+class LoopResult:
+    added_count: int = 0
+    removed_count: int = 0
+
+def loop() -> LoopResult:
     print("Running loop...")
 
     # make sure VSCode is not running
     if is_vscode_running():
         print("VSCode is running, please close it first")
-        return
+        return LoopResult()
     print("VSCode is not running, proceeding...")
     
     # read from VSCode state
@@ -40,6 +46,7 @@ def loop(callback: Callable[[int, int], None] = None):
     for deleted_folder_uri in deleted_folder_uris:
         delete_vscode_shortcut(deleted_folder_uri)
 
-    # callback
-    if callback:
-        callback(len(added_folder_uris), len(deleted_folder_uris))
+    return LoopResult(
+        added_count=len(added_folder_uris),
+        removed_count=len(deleted_folder_uris),
+    )

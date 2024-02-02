@@ -1,19 +1,18 @@
-from codeopener.loop import loop
+from codeopener.loop import loop, LoopResult
 
 
-def simple_print_callback(added_count: int, deleted_count: int):
-    print(f"Added {added_count} shortcuts and deleted {deleted_count} shortcuts")
-
-
-def windows_native_notification_callback(added_count: int, deleted_count: int):
+def windows_native_notification(res: LoopResult):
     from win11toast import notify
 
-    if added_count > 0 and deleted_count > 0:
-        msg = f"Added {added_count} shortcuts and deleted {deleted_count} shortcuts"
+    added_count = res.added_count
+    removed_count = res.removed_count
+
+    if added_count > 0 and removed_count > 0:
+        msg = f"Added {added_count} shortcuts and deleted {removed_count} shortcuts"
     elif added_count > 0:
         msg = f"Added {added_count} shortcuts"
-    elif deleted_count > 0:
-        msg = f"Deleted {deleted_count} shortcuts"
+    elif removed_count > 0:
+        msg = f"Deleted {removed_count} shortcuts"
     else:
         msg = None
 
@@ -26,7 +25,8 @@ def main():
     # TODO: run once mode & run forever mode (need to allow forever sudo)
     # TODO: see logs and CodeOpenerException and other exceptions in a log window
     # TODO: on-device tests and test on Windows 10
-    loop(windows_native_notification_callback)
+    res = loop()
+    windows_native_notification(res)
 
 
 if __name__ == '__main__':
