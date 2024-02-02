@@ -8,6 +8,7 @@ import shutil
 from typing import List
 from unittest.mock import patch
 from .list_vscode_shortcuts import list_vscode_shortcuts
+from .create_vscode_shortcut import create_vscode_shortcut
 from .loop import loop
 
 def create_fake_vcsdb(path: str, folder_uris: List[str]):
@@ -34,21 +35,26 @@ class LoopTestCase(unittest.TestCase):
     @patch('codeopener.create_vscode_shortcut.ensure_start_menu_folder')
     @patch('codeopener.delete_vscode_shortcut.ensure_start_menu_folder')
     # the order of @patch decorators and order of parameters are reversed...
-    def test_create_shortcuts(self,
+    def test_loop(self,
                   ensure_start_menu_folder_mock_for_delete,
                   ensure_start_menu_folder_mock_for_create,
                   ensure_start_menu_folder_mock_for_list,
                   get_vscode_state_path_mock,
                   is_vscode_running_mock):
-        folder_uris = ["file:///c%3A/test1", "file:///c%3A/test2"]
         ensure_start_menu_folder_mock_for_delete.return_value = self.start_menu_folder
         ensure_start_menu_folder_mock_for_create.return_value = self.start_menu_folder
         ensure_start_menu_folder_mock_for_list.return_value = self.start_menu_folder
         get_vscode_state_path_mock.return_value = self.vscode_state_path
-        create_fake_vcsdb(self.vscode_state_path, folder_uris)
         is_vscode_running_mock.return_value = False
+
+        desired_folder_uris = ["file:///c%3A/test1", "file:///c%3A/test2"]
+        create_fake_vcsdb(self.vscode_state_path, desired_folder_uris)
+        create_vscode_shortcut("file:///c%3A/test2", "test2")
+        create_vscode_shortcut("file:///c%3A/test3", "test3")
+
         loop()
-        self.assertEqual(list_vscode_shortcuts(), folder_uris)
+        # test1 should be added; test2 should be retained; test3 should be removed
+        self.assertEqual(list_vscode_shortcuts(), desired_folder_uris)
 
 
     @classmethod
