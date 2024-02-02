@@ -1,10 +1,10 @@
 from typing import Callable
-from codeopener.create_vscode_shortcut import create_vscode_shortcut
-from codeopener.list_vscode_shortcuts import list_vscode_shortcuts
-from codeopener.delete_vscode_shortcut import delete_vscode_shortcut    
-from codeopener.is_vscode_running import is_vscode_running
-from codeopener.read_vscode_state import read_vscode_state
-from codeopener.parse_workspace_name import parse_workspace_name
+from .create_vscode_shortcut import create_vscode_shortcut
+from .list_vscode_shortcuts import list_vscode_shortcuts
+from .delete_vscode_shortcut import delete_vscode_shortcut    
+from .is_vscode_running import is_vscode_running
+from .read_vscode_state import read_vscode_state
+from .parse_workspace_name import parse_workspace_name
 
 
 def loop(callback: Callable[[int, int], None] = None):

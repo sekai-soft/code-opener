@@ -267,3 +267,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,python,visualstudiocode
+
+test_start_menu_folder_*
+*.vscdb
