@@ -1,4 +1,5 @@
 from .loop import LoopResult
+from .logger import logger
 
 
 def windows_native_notification(res: LoopResult):
@@ -6,7 +7,7 @@ def windows_native_notification(res: LoopResult):
 
     added_count = res.added_count
     removed_count = res.removed_count
-    print(f"Added {added_count} shortcuts and deleted {removed_count} shortcuts")
+    logger.info(f"Added {added_count} shortcuts and deleted {removed_count} shortcuts")
 
     if added_count > 0 and removed_count > 0:
         msg = f"Added {added_count} shortcuts and deleted {removed_count} shortcuts"

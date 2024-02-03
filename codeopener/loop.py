@@ -6,6 +6,7 @@ from .delete_vscode_shortcut import delete_vscode_shortcut
 from .is_vscode_running import is_vscode_running
 from .read_vscode_state import read_vscode_state
 from .parse_workspace_name import parse_workspace_name
+from .logger import logger
 
 
 @dataclass
@@ -14,13 +15,13 @@ class LoopResult:
     removed_count: int = 0
 
 def loop() -> LoopResult:
-    print("Running loop...")
+    logger.info("Running loop...")
 
     # make sure VSCode is not running
     if is_vscode_running():
-        print("VSCode is running, please close it first")
+        logger.info("VSCode is running, please close it first")
         return LoopResult()
-    print("VSCode is not running, proceeding...")
+    logger.info("VSCode is not running, proceeding...")
     
     # read from VSCode state
     vscode_folder_uris = read_vscode_state()
