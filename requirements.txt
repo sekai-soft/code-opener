@@ -1,4 +1,6 @@
 pylnk3==0.4.2
 psutil==5.9.8
+pywin32==306
 win11toast==0.34
 infi.systray==0.1.12
+pyuac==0.0.3
