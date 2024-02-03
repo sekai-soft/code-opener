@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)  # Set the logging level
 
 # Create a file handler
-log_file = 'Code Opener.log'
+log_file = 'CodeOpener.log'
 file_handler = logging.FileHandler(log_file)
 file_handler.setLevel(logging.DEBUG)  # Set the logging level for the file
 
@@ -22,4 +22,4 @@ stream_handler.setFormatter(formatter)
 
 # Add the handlers to the logger
 logger.addHandler(file_handler)
-logger.addHandler(stream_handler)
+# logger.addHandler(stream_handler)

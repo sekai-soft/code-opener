@@ -15,8 +15,7 @@ def _loop():
 
 
 def open_logs(_):
-    pass
-    # subprocess.run(["PowerShell", "Get-Content", "-Path", log_file, "-Wait"])
+    subprocess.run(["PowerShell", "Get-Content", "-Path", log_file, "-Wait"])
 
 menu_options = (("Logs", None, open_logs),)
 
