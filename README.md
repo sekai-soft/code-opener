@@ -1,5 +1,5 @@
 # Code Opener
-Syncs your VSCode workspaces to Start Menu on Windows 10/11
+Syncs your VSCode projects to Start Menu on Windows 10/11
 
 ## Motivation
 I use VSCode on Windows 11, but a pain point is whenever I want to open a specific project, I have to open VSCode and go to File -> Open Recent and pick the project from there (I could have also opened a terminal and type `code project-dir` but it's also kind of cumbersome).
