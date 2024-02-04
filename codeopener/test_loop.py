@@ -34,8 +34,14 @@ class LoopTestCase(unittest.TestCase):
     @patch('codeopener.list_vscode_shortcuts.ensure_start_menu_folder')
     @patch('codeopener.create_vscode_shortcut.ensure_start_menu_folder')
     @patch('codeopener.delete_vscode_shortcut.ensure_start_menu_folder')
+    @patch('codeopener.create_vscode_shortcut.find_vscode_cmd_path')
+    @patch('codeopener.create_vscode_shortcut.find_vscode_exe_path')
+    @patch('codeopener.create_vscode_shortcut.find_vscode_bin_path')
     # the order of @patch decorators and order of parameters are reversed...
     def test_loop(self,
+                  find_vscode_bin_path_mock_for_create,
+                  find_vscode_exe_path_mock_for_create,
+                  find_vscode_cmd_path_mock_for_create,
                   ensure_start_menu_folder_mock_for_delete,
                   ensure_start_menu_folder_mock_for_create,
                   ensure_start_menu_folder_mock_for_list,
@@ -46,6 +52,9 @@ class LoopTestCase(unittest.TestCase):
         ensure_start_menu_folder_mock_for_list.return_value = self.start_menu_folder
         get_vscode_state_path_mock.return_value = self.vscode_state_path
         is_vscode_running_mock.return_value = False
+        find_vscode_cmd_path_mock_for_create.return_value = "C:\\Windows\\explorer.exe"
+        find_vscode_exe_path_mock_for_create.return_value = "C:\\Windows\\explorer.exe"
+        find_vscode_bin_path_mock_for_create.return_value = "C:\\Windows"
 
         desired_folder_uris = ["file:///c%3A/test1", "file:///c%3A/test2"]
         create_fake_vcsdb(self.vscode_state_path, desired_folder_uris)
