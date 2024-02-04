@@ -6,9 +6,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)  # Set the logging level
 
 # Create a file handler
-# I wanted to name it "Code Opener.log"
-# but it's obviously very hard for PowerShell to accept a file name with spaces :(
-log_file = 'CodeOpener.log'
+log_file = 'code-opener.log'
 file_handler = RotatingFileHandler(log_file, maxBytes=100000, backupCount=5)
 file_handler.setLevel(logging.DEBUG)  # Set the logging level for the file
 

@@ -20,7 +20,8 @@ python -m unittest discover
 #### Build Windows app
 ```
 .\venv\Scripts\activate
-pyinstaller --windowed --uac-admin --clean .\tray.py
+pyinstaller --name "Code Opener" --windowed --uac-admin --icon icon.ico --clean .\tray.py
+cp icon.ico "dist\Code Opener"
 ```
 
 Then find the built app in `dist` folder
