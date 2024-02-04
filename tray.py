@@ -9,10 +9,12 @@ from codeopener.loop import loop
 from codeopener.windows_native_notification import windows_native_notification
 from codeopener.logger import log_file
 
+loop_interval = 10
+
 def _loop():
         while True:
             windows_native_notification(loop())
-            time.sleep(10)
+            time.sleep(loop_interval)
 
 
 def open_logs(_):
