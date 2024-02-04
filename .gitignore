@@ -270,5 +270,3 @@ $RECYCLE.BIN/
 
 test_start_menu_folder_*
 *.vscdb
-pyuac.stderr.tmp.txt
-pyuac.stdout.tmp.txt

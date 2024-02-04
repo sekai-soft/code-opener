@@ -2,11 +2,9 @@ import time
 import multiprocessing
 import subprocess
 from infi.systray import SysTrayIcon
-from pyuac import main_requires_admin
 from codeopener.loop import loop
 from codeopener.windows_native_notification import windows_native_notification
 from codeopener.logger import log_file
-
 
 def _loop():
         while True:
@@ -20,7 +18,6 @@ def open_logs(_):
 menu_options = (("Logs", None, open_logs),)
 
 
-@main_requires_admin
 def main():
     loop_process = multiprocessing.Process(target=_loop)
     loop_process.start()
