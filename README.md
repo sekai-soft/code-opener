@@ -29,6 +29,7 @@ The program is tested on
 Caveats
 - The program needs Administrator privilege because it writes to a folder in Start Menu
 - Synchronization only happens when VSCode is closed. This is to avoid potential data corruption because it reads a sqlite database that VSCode manages.
+- The program might be erroneously identified by Windows Security/Defender as Trojan. This is a [known issue by PyInstaller](https://github.com/pyinstaller/pyinstaller/issues/5854) and please exempt the exe.
 
 Find the latest workflow run in [GitHub Actions tab](https://github.com/sekai-soft/code-opener/actions)
 
