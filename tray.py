@@ -1,6 +1,9 @@
 import time
 import multiprocessing
 import subprocess
+# hack required for infi.systray to work with pyinstaller
+# because it imports pkg_resources :(
+import pkg_resources
 from infi.systray import SysTrayIcon
 from codeopener.loop import loop
 from codeopener.windows_native_notification import windows_native_notification
@@ -30,4 +33,6 @@ def main():
 
 
 if __name__ == '__main__':
+    # https://github.com/pyinstaller/pyinstaller/wiki/Recipe-Multiprocessing
+    multiprocessing.freeze_support()
     main()
