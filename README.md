@@ -59,7 +59,13 @@ pip install -r requirements
 python -m unittest discover
 ```
 
-### Build Windows app
+### Run program without packaging
+```
+.\venv\Scripts\activate
+pythonw .\tray.app
+```
+
+### Package Windows app
 ```
 .\venv\Scripts\activate
 pyinstaller --name "Code Opener" --windowed --uac-admin --icon icon.ico --clean .\tray.py

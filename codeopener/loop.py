@@ -14,7 +14,7 @@ class LoopResult:
     added_count: int = 0
     removed_count: int = 0
 
-def loop() -> LoopResult:
+def _loop() -> LoopResult:
     logger.info("Running loop...")
 
     # make sure VSCode is not running
@@ -51,3 +51,10 @@ def loop() -> LoopResult:
         added_count=len(added_folder_uris),
         removed_count=len(deleted_folder_uris),
     )
+
+def loop() -> LoopResult:
+    try:
+        return _loop()
+    except Exception as e:
+        logger.exception(e)
+        return LoopResult()
