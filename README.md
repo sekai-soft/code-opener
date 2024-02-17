@@ -43,6 +43,9 @@ The program is a long-running tray application so look for this icon in your sys
 
 Right click it to see its logs, open the Start Menu folder that it writes to, etc.
 
+## Like what you see?
+Consider support us on [Patreon](https://www.patreon.com/sekaisoft) :)
+
 ## Development
 Developed on Python 3.12.1 on Windows 11
 
