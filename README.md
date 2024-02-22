@@ -53,7 +53,7 @@ Developed on Python 3.12.1 on Windows 11
 ```
 python -m venv venv
 .\venv\Scripts\activate
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 ### Run unit tests
@@ -65,7 +65,7 @@ python -m unittest discover
 ### Run program without packaging
 ```
 .\venv\Scripts\activate
-pythonw .\tray.app
+pythonw .\tray.py
 ```
 
 ### Package Windows app
