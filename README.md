@@ -49,28 +49,30 @@ Consider support us on [Patreon](https://www.patreon.com/sekaisoft) :)
 ## Development
 Developed on Python 3.12.1 on Windows 11
 
+(Run the commands below in Command Prompt)
+
 ### Install dependencies
 ```
 python -m venv venv
-.\venv\Scripts\activate
+.\venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
 ### Run unit tests
 ```
-.\venv\Scripts\activate
+.\venv\Scripts\activate.bat
 python -m unittest discover
 ```
 
 ### Run program without packaging
 ```
-.\venv\Scripts\activate
+.\venv\Scripts\activate.bat
 pythonw .\tray.py
 ```
 
 ### Package Windows app
 ```
-.\venv\Scripts\activate
+.\venv\Scripts\activate.bat
 pyinstaller --name "Code Opener" --windowed --uac-admin --icon icon.ico --clean .\tray.py
 cp icon.ico "dist\Code Opener"
 ```
