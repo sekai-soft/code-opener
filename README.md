@@ -1,3 +1,5 @@
+DEPRECATED. Please check out [sekai-soft/code-launcher](https://github.com/sekai-soft/code-launcher) instead.
+
 # Code Opener
 Syncs your VSCode projects to Start Menu on Windows 10/11
 
